@@ -4,24 +4,24 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="pragma" content="no-cache">
-    <link rel="stylesheet" href="../../style/css/app.css">
-    <script src="../../js/riddle.js"></script>
-    <title>Riddle 1</title>
+    <link rel="stylesheet" href="../../../style/css/app.css">
+    <script src="../../../js/riddle.js"></script>
+    <title>Riddle 2</title>
   </head>
   <body role="application">
     <button onclick="window.history.back()">Voltar</button>
-    <h1>Riddle 1</h1>
+    <h1>Riddle 2</h1>
     <table align="center" class="tips">
       <tr>
-	<td class="tips">O melhor navegador (<i>browser</i>) do século</td>
+	<td class="tips">Casquinha (sorvete)</td>
       </tr>
       <tr>
 	<td>
-	  <img class="tips" src="../../img/riddle1.png"></img>
+	  <img class="tips" src="2.png"></img>
 	</td>
       </tr>
       <tr>
-	<td class="tips">Desenvolvido pela <i>Mozilla Foundation</i></td>
+	<td class="tips">Sinalização de trânsito</td>
       </tr>
     </table>
     <p id="status" class="status"></p>
@@ -29,7 +29,7 @@
       <form class="tips" id="riddle">
 	<label for="answer">Resposta:</label>
 	<input type="text" id="answer">
-	<input type="button" onclick="submeter()" value="Submeter">
+	<input type="button" onclick="submeter({'answer': 'firefox'})" value="Submeter">
     </div>
     </form>
   </body>
