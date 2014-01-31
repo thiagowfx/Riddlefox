@@ -1,0 +1,14 @@
+{
+    "name": "Riddlefox",
+    "version": "0.1",
+    "description": "A simple riddle game app.",
+    "launch_path": "/index.html",
+    "developer": {
+	"name": "Thiago Perrotta",
+	"url": "https://github.com/thiagowfx/"
+    },
+    "icons": {
+	"60": "/style/icons/icon_60.png",
+	"128": "/style/icons/icon_128.png"
+    }
+}
