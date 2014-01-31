@@ -1,4 +1,4 @@
-function submeter(jsonanswer)
+function submeter()
 {
     /* resposta do usuário */
     var answer = document.getElementById("answer").value.toLowerCase();
@@ -7,44 +7,53 @@ function submeter(jsonanswer)
     
     /* lógica para determinar o número do riddle atual */
     var currentLevel = window.location.pathname; // absolute path
-    
     currentLevel = currentLevel.substring(currentLevel.lastIndexOf('/')+1);
-    console.log('currentLevel: ' + currentLevel); // e.g. 1.html
-    
     currentLevel = currentLevel.slice(0, currentLevel.length - 5);
-    console.log('currentLevel: ' + currentLevel); // e.g. 1
 
-    
+    /* número do próximo riddle */
+    var nextLevel = +currentLevel + 1;
+
     /* Lógica para obter a resposta do módulo atual */
-    console.log('JSON object: ' + jsonanswer);
-    console.log('JSON answer: ' + jsonanswer.answer);
+    // var xmlHttp = new XMLHttpRequest();
+    // xmlHttp.open("GET", "answers.json", false);
+    // xmlHttp.send();
+    // console.log(xmlHttp.responseText);
     
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "answers.json", false);
-    xmlHttp.send();
-    console.log('aaaaaaaaaa');
-    console.log(xmlHttp.responseText);
-    var jsonRead = eval(xmlHttp.responseText);
-    console.log(jsonRead);
+    var answers1 = {
+	"0": "",
+	"1": ["firefox","mozilla firefox"],
+	"2": ["opensuse","suse","suse linux"],
+	"3": ["donald knuth","knuth"],
+	"4": ["lisp"],
+	"5": ["wep"]
+    };
 
-    // TODO
-    if (answer == jsonanswer.answer) {
-	var nextLevel = +currentLevel + 1;
-	console.log('nextLevel: ' + nextLevel);
+    /* Avalia se a resposta do usuário está correta. */
+    var jsonAnswer = answers1;
+    var answerCorrect = false;
+    
+    for (i = 0; i < jsonAnswer[currentLevel].length; ++i) {
+	if ( answer == jsonAnswer[currentLevel][i] ) {
+	    answerCorrect = true;
+	    break;
+	}
+    }
 
+    /* Decide qual ação deverá ser tomada, em relação à resposta do usuário. */
+    if (answerCorrect) {
+	/* Fases já se esgotaram? */
 	if (nextLevel == 6) {
 	    window.location.href = "../won.html";
-	    console.log('carreguei won.html');
 	}
-	else {	
+	
+	/* Ir para a próxima fase. */
+	else {
 	    var nextPage = nextLevel + ".html";
-	    console.log(nextPage);
 	    window.location.href = nextPage;
 	}
-
-	
-    }
+    }    
     else {
+	/* Alerta o usuário sobre sua resposta errada. */
 	document.getElementById("status").innerHTML="Você errou! Tente novamente.";
     }
 }
